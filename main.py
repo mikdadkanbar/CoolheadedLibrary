@@ -126,13 +126,53 @@ def return_book (book_id, username) :
 #         change the quzntity of the book by +1
     
 def mark_read (book_id, username)  :
-    pass
-#     control user 
-#     add a row to users : with book id + username + read=1
+    sql(f""" select b.book_id, string_agg(p.username, ';')
+                    from books b 
+                    join users p on ( b.book_id = p.read) where username=('{username}') 
+                    group by 1 """)
+
+    for book_id in sql:
+        print(f'The ‘BOOK ID’ {book_id} this book as “read” ')
     
+    
+    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
+    
+    for book_id in sql:
+        print(f'You mark read {book_id} will_read')
+#     control user cresult
+#     add a row to users : with book id + username + read=1
+
+def mark_reading   (book_id, username) :
+    sql(f""" select b.book_id, string_agg(p.username, ';')
+                    from books b 
+                    join users p on ( b.book_id = p.reading) where username=('{username}') 
+                    group by 1 """)
+
+    for book_id in sql:
+        print(f'The ‘BOOK ID’ {book_id} this book as “reading” ')
+    
+    
+    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
+    
+    for book_id in sql:
+        print(f'You mark read {book_id} as reading')
+
+
 def mark_will_read   (book_id, username) :
-    pass
-#     same logic for the previous, make will_read=1
+    sql(f""" select b.book_id, string_agg(p.username, ';')
+                    from books b 
+                    join users p on ( b.book_id = p.will_read) where username=('{username}') 
+                    group by 1 """)
+
+    for book_id in sql:
+        print(f'The ‘BOOK ID’ {book_id} this book as “will_read” ')
+    
+    
+    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
+    
+    for book_id in sql:
+        print(f'You mark read {book_id} will_read')
+    
     
 def fav_book (  username) :
     pass
