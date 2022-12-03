@@ -139,8 +139,7 @@ def mark_read (book_id, username)  :
     
     for book_id in sql:
         print(f'You mark read {book_id} will_read')
-#     control user cresult
-#     add a row to users : with book id + username + read=1
+
 
 def mark_reading   (book_id, username) :
     sql(f""" select b.book_id, string_agg(p.username, ';')
