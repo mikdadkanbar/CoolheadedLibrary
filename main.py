@@ -202,30 +202,56 @@ def fav_book ( book_id, username) :
             else:
                 print('Book marked as favourite before!')
     
-def my_books (username)    :
-    pass
-#     in users : search for everything related to this user
-#     return  only rows where reading or read or will_read    are not null
+def my_books(username)    :
+  if user_exist (username) :
+    books_you_read = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and read =1) u 
+    inner join books b ON u.book_id=b.book_id """)
+    
+    reading = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and reading =1) u 
+    inner join books b ON u.book_id=b.book_id """)                      
+                    
+    will_read = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and will_read =1) u 
+    inner join books b ON u.book_id=b.book_id """)       
+    
+    fav = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and fav =1) u 
+    inner join books b ON u.book_id=b.book_id """)
+    
 
+    print ('Books you read:' , '\n',books_you_read  )   
+    print ('Books you are reading: ' , '\n',reading )   
+    print ('Books you will_read: ' , '\n',will_read )   
+    print ('Your favourite books are: ' , '\n',fav ) 
+     
+    
+    
+    
+def statistics (username)  :
+     if user_exist (username) :
+        books_you_read = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and read =1) u 
+        inner join books b ON u.book_id=b.book_id """)
 
+        reading = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and reading =1) u 
+        inner join books b ON u.book_id=b.book_id """)                      
 
-def statistics (username) :
-    pass
-#     in users : search for everything related to this user WHERE read is not null + inner join with books ON book_id
-        
-#     now , for books_you_read :  group the results by book id ? 
-#     use join in similar way to find all other statistics,
-#     find a way to display results
-        
+        will_read = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and will_read =1) u 
+        inner join books b ON u.book_id=b.book_id """)       
+
+        fav = sql (f"""SELECT b.* FROM (SELECT * FROM users WHERE  username = '{username}' and fav =1) u 
+        inner join books b ON u.book_id=b.book_id """)
+
+        stats= { 'Books you read:'  : len(books_you_read.index ), 
+         'Books you are reading: ': len(reading.index) ,   
+         'Books you will_read: ' : len(will_read.index) ,  
+         'Your favourite books are: ': len(fav.index) ,  
+
+        }
+        for i in stats.items():
+            print (i)
+     
     
     
  
   
-
-# sql('select * from books')
-# search_by_author("Suzanne collins")
-# recently_added ('Science fiction')
-# most_read_books('Science fiction')
-# # most_favorite_books ()
-# most_read_genres   ()
-print (most_read_authors ())
+mark_will_read()
+ 
+ 
