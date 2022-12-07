@@ -144,32 +144,34 @@ def return_book (book_id, username) :
                 print ('Book is not borrowed!')    
 
 
-    
 def mark_read (book_id, username)  :
-    query = sql(f""" SELECT count (book_id) as org
-             FROM books
-             JOIN users
-             ON book_id = read where {book_id} and username=('{username}') """)
-
-    return print(f"The BOOK ID {query} this book as 'read' ")
+    if user_exist (username) :
+            
+            mr= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' and read =1")
+            if len(mr.index) == 0 : 
+              sql(f"INSERT INTO users (username,book_id, read) VALUES ( '{username}', {book_id}, 1)")
+            else:
+                print('Book marked as read before!')
 
 
 def mark_reading   (book_id, username) :
-    query = sql(f""" SELECT count (book_id) as org
-             FROM books
-             JOIN users
-             ON book_id = reading where {book_id} and username=('{username}') """)
-
-    return print(f"The BOOK ID {query} this book as 'reading' ")
-
+    if user_exist (username) :
+            
+            r= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' and reading =1")
+            if len(r.index) == 0 : 
+              sql(f"INSERT INTO users (username,book_id, reading) VALUES ('{username}', {book_id}, 1)")
+            else:
+                print('Book marked as reading before!')
 
 def mark_will_read   (book_id, username) :
-    query = sql(f""" SELECT count (book_id) as org
-             FROM books
-             JOIN users
-             ON book_id = read where {book_id} and username=('{username}') """)
-
-    return print(f"The BOOK ID {query} this book as 'will_read' ")
+ 
+    if user_exist (username) :
+            
+            wr= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' and will_read =1")
+            if len(wr.index) == 0 : 
+              sql(f"INSERT INTO users (username,book_id,  will_read) VALUES ( '{username}', {book_id}, 1)")
+            else:
+                print('Book marked as will read before!')
     
     
 def fav_book ( book_id, username) :
