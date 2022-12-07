@@ -126,51 +126,30 @@ def return_book (book_id, username) :
 #         change the quzntity of the book by +1
     
 def mark_read (book_id, username)  :
-    sql(f""" select b.book_id, string_agg(p.username, ';')
-                    from books b 
-                    join users p on ( b.book_id = p.read) where username=('{username}') 
-                    group by 1 """)
+    query = sql(f""" SELECT count (book_id) as org
+             FROM books
+             JOIN users
+             ON book_id = read where {book_id} and username=('{username}') """)
 
-    for book_id in sql:
-        print(f'The ‘BOOK ID’ {book_id} this book as “read” ')
-    
-    
-    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
-    
-    for book_id in sql:
-        print(f'You mark read {book_id} will_read')
+    return print(f"The BOOK ID {query} this book as 'read' ")
 
 
 def mark_reading   (book_id, username) :
-    sql(f""" select b.book_id, string_agg(p.username, ';')
-                    from books b 
-                    join users p on ( b.book_id = p.reading) where username=('{username}') 
-                    group by 1 """)
+    query = sql(f""" SELECT count (book_id) as org
+             FROM books
+             JOIN users
+             ON book_id = reading where {book_id} and username=('{username}') """)
 
-    for book_id in sql:
-        print(f'The ‘BOOK ID’ {book_id} this book as “reading” ')
-    
-    
-    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
-    
-    for book_id in sql:
-        print(f'You mark read {book_id} as reading')
+    return print(f"The BOOK ID {query} this book as 'reading' ")
 
 
 def mark_will_read   (book_id, username) :
-    sql(f""" select b.book_id, string_agg(p.username, ';')
-                    from books b 
-                    join users p on ( b.book_id = p.will_read) where username=('{username}') 
-                    group by 1 """)
+    query = sql(f""" SELECT count (book_id) as org
+             FROM books
+             JOIN users
+             ON book_id = read where {book_id} and username=('{username}') """)
 
-    for book_id in sql:
-        print(f'The ‘BOOK ID’ {book_id} this book as “will_read” ')
-    
-    
-    sql(f"SELECT SUM(will_read) FROM users WHERE username= ('{username}')")
-    
-    for book_id in sql:
-        print(f'You mark read {book_id} will_read')
+    return print(f"The BOOK ID {query} this book as 'will_read' ")
     
     
 def fav_book (  username) :
