@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.books
     genre character varying(55),
     quantity integer,
 	borrowed integer,
-    availability boolean,
+    
     PRIMARY KEY (book_id)
 );
 
@@ -32,5 +32,94 @@ ALTER TABLE IF EXISTS public.users
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
-
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Fundamentals of Wavelets', 'Goswami, Jaideva', 'signal_processing', 228, 18);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Data Smart', 'Foreman, John', 'data_science', 235, 37);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('God Created the Integers', 'Hawking, Stephen', 'mathematics', 197, 8);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Superfreakonomics', 'Dubner, Stephen', 'economics', 179, 8);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Orientalism', 'Said, Edward', 'history', 197, 8);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Nature of Statistical Learning Theory, The', 'Vapnik, Vladimir', 'data_science', 230, 18);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Integration of the Indian States', 'Menon, V P', 'history', 217, 24);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Drunkard''s Walk, The', 'Mlodinow, Leonard', 'mathematics', 197, 46);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Image Processing & Mathematical Morphology', 'Shih, Frank', 'signal_processing', 241, 16);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('How to Think Like Sherlock Holmes', 'Konnikova, Maria', 'psychology', 240, 42);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Data Scientists at Work', 'Sebastian Gutierrez', 'data_science', 230, 35);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Slaughterhouse Five', 'Vonnegut, Kurt', 'classic', 198, 27);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Birth of a Theorem', 'Villani, Cedric', 'mathematics', 234, 26);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Structure & Interpretation of Computer Programs', 'Sussman, Gerald', 'computer_science', 240, 29);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Age of Wrath, The', 'Eraly, Abraham', 'history', 238, 45);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Trial, The', 'Kafka, Frank', 'classic', 198, 41);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Statistical Decision Theory''', 'Pratt, John', 'data_science', 236, 44);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Data Mining Handbook', 'Nisbet, Robert', 'data_science', 242, 15);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('New Machiavelli, The', 'Wells, H. G.', 'novel', 180, 11);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Physics & Philosophy', 'Heisenberg, Werner', 'science', 197, 26);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Making Software', 'Oram, Andy', 'computer_science', 232, 32);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Analysis, Vol I', 'Tao, Terence', 'mathematics', 248, 49);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Machine Learning for Hackers', 'Conway, Drew', 'data_science', 233, 41);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Signal and the Noise, The', 'Silver, Nate', 'data_science', 233, 14);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Python for Data Analysis', 'McKinney, Wes', 'data_science', 233, 18);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Introduction to Algorithms', 'Cormen, Thomas', 'computer_science', 234, 5);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Beautiful and the Damned, The', 'Deb, Siddhartha', 'history', 198, 46);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Outsider, The', 'Camus, Albert', 'classic', 198, 33);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Complete Sherlock Holmes, The - Vol I', 'Doyle, Arthur Conan', 'classic', 176, 10);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Complete Sherlock Holmes, The - Vol II', 'Doyle, Arthur Conan', 'classic', 176, 17);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Wealth of Nations, The', 'Smith, Adam', 'economics', 175, 36);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Pillars of the Earth, The', 'Follett, Ken', 'novel', 176, 47);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Mein Kampf', 'Hitler, Adolf', 'autobiography', 212, 8);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Tao of Physics, The', 'Capra, Fritjof', 'physics', 179, 19);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Surely You''re Joking Mr Feynman', 'Feynman, Richard', 'physics', 198, 12);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Farewell to Arms, A', 'Hemingway, Ernest', 'classic', 179, 30);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Veteran, The', 'Forsyth, Frederick', 'novel', 177, 23);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('False Impressions', 'Archer, Jeffery', 'novel', 177, 19);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Last Lecture, The', 'Pausch, Randy', 'autobiography', 197, 11);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Return of the Primitive', 'Rand, Ayn', 'objectivism', 202, 45);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Jurassic Park', 'Crichton, Michael', 'novel', 174, 43);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Russian Journal, A', 'Steinbeck, John', 'history', 196, 49);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Tales of Mystery and Imagination', 'Poe, Edgar Allen', 'classic', 172, 44);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Freakonomics', 'Dubner, Stephen', 'economics', 197, 29);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Hidden Connections, The', 'Capra, Fritjof', 'physics', 197, 27);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Story of Philosophy, The', 'Durant, Will', 'history', 170, 36);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Asami Asami', 'Deshpande, P L', 'novel', 205, 9);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Journal of a Novel', 'Steinbeck, John', 'classic', 196, 5);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Once There Was a War', 'Steinbeck, John', 'history', 196, 23);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Moon is Down, The', 'Steinbeck, John', 'classic', 196, 34);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Brethren, The', 'Grisham, John', 'novel', 174, 1);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('In a Free State', 'Naipaul, V. S.', 'novel', 196, 9);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Catch 22', 'Heller, Joseph', 'classic', 178, 3);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Complete Mastermind, The', 'BBC', 'trivia', 178, 11);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Dylan on Dylan', 'Dylan, Bob', 'autobiography', 197, 30);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Soft Computing & Intelligent Systems', 'Gupta, Madan', 'data_science', 242, 33);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Textbook of Economic Theory', 'Stonier, Alfred', 'economics', 242, 43);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Econometric Analysis', 'Greene, W. H.', 'economics', 242, 15);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Learning OpenCV', 'Bradsky, Gary', 'signal_processing', 232, 10);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Data Structures Using C & C++', 'Tanenbaum, Andrew', 'computer_science', 235, 14);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Computer Vision, A Modern Approach', 'Forsyth, David', 'signal_processing', 255, 24);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Principles of Communication Systems', 'Taub, Schilling', 'signal_processing', 240, 47);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Let Us C', 'Kanetkar, Yashwant', 'computer_science', 213, 16);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Amulet of Samarkand, The', 'Stroud, Jonathan', 'novel', 179, 9);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Crime and Punishment', 'Dostoevsky, Fyodor', 'classic', 180, 46);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Angels & Demons', 'Brown, Dan', 'novel', 178, 33);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Argumentative Indian, The', 'Sen, Amartya', 'history', 209, 43);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Sea of Poppies', 'Ghosh, Amitav', 'novel', 197, 10);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Idea of Justice, The', 'Sen, Amartya', 'economics', 212, 5);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Raisin in the Sun, A', 'Hansberry, Lorraine', 'novel', 175, 37);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('All the President''s Men', 'Woodward, Bob', 'history', 177, 37);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Prisoner of Birth, A', 'Archer, Jeffery', 'novel', 176, 16);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Scoop!', 'Nayar, Kuldip', 'history', 216, 20);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Ahe Manohar Tari', 'Deshpande, Sunita', 'autobiography', 213, 11);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Last Mughal, The', 'Dalrymple, William', 'history', 199, 18);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Social Choice & Welfare, Vol 39 No. 1', 'Various', 'economics', 235, 39);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Radiowaril Bhashane & Shrutika', 'Deshpande, P L', 'misc', 213, 28);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Gun Gayin Awadi', 'Deshpande, P L', 'misc', 212, 6);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Aghal Paghal', 'Deshpande, P L', 'misc', 212, 2);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Maqta-e-Ghalib', 'Garg, Sanjay', 'poetry', 221, 2);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Beyond Degrees', 'None', 'education', 222, 15);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Manasa', 'Kale, V P', 'misc', 213, 39);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('India from Midnight to Milennium', 'Tharoor, Shashi', 'history', 198, 36);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('World''s Greatest Trials, The', 'None', 'history', 210, 22);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Great Indian Novel, The', 'Tharoor, Shashi', 'novel', 198, 29);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('O Jerusalem!', 'Lapierre, Dominique', 'history', 217, 18);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('City of Joy, The', 'Lapierre, Dominique', 'novel', 177, 43);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Freedom at Midnight', 'Lapierre, Dominique', 'history', 167, 4);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Winter of Our Discontent, The', 'Steinbeck, John', 'classic', 196, 40);
+INSERT INTO books (name, author, genre, pages , quantity) VALUES ('On Education', 'Russell, Bertrand', 'education', 203, 5);
 END;

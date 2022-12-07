@@ -2,11 +2,12 @@ from connect import *
 
 
 
+
 def user_exist (username) :
     users=  sql('select distinct username  from users')
-    username= (username,)
+     
     
-    if username in users:
+    if username in users[users.columns[0]].values.tolist():
         return True
     return False
     
@@ -112,18 +113,37 @@ def most_read_authors () :
     """)
 
 def borrow_book (book_id, username) : 
-    pass
-#         -control user (make sure it exists or not , if not > msg)
-#         -if book avalable : 
-#             add a row to users , with username + borrowed =1
-#             change the quzntity of the book by -1
-    
+    if user_exist :
+        quantity =  (sql(f"SELECT quantity FROM BOOKS WHERE BOOK_ID='{book_id}' ") ._get_value(0, 0, takeable=False)  )
+        if quantity >0 : 
+            #make sure the user hasn't borrowed the same book :
+            b= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' AND borrowed =1")
+            print (b)
+            print(  len(b.index))
+            if len(b.index)  == 0 : 
+            #adding a row to users
+                sql(f"INSERT INTO users (username,book_id,  borrowed) VALUES ( '{username}' , {book_id}, 1)")
+                sql (f"UPDATE books SET quantity = {quantity-1} WHERE book_id = {book_id}  ")
+                print ('Book borrowed !')
+            else:  
+                print ('Book already borrowed!')
+ 
 def return_book (book_id, username) : 
-    pass
-#     after controling user : 
-#         search for book_id + username in users 
-#         if borowed is 1 > change it to null ? ( or delete row ? )
-#         change the quzntity of the book by +1
+    if user_exist :
+            quantity =  (sql(f"SELECT quantity FROM BOOKS WHERE BOOK_ID='{book_id}' ") ._get_value(0, 0, takeable=False)  )
+            
+        
+            #make sure that the book is borrowed :  
+            b= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' and borrowed =1")
+            if len(b.index) > 0 : 
+            #adding a row to users
+                sql (f"UPDATE users SET borrowed =0 WHERE book_id = {book_id}  ")
+                sql (f"UPDATE books SET quantity = {quantity+1} WHERE book_id = {book_id}  ")
+                print ('Book returned!')
+            else:  
+                print ('Book is not borrowed!')    
+
+
     
 def mark_read (book_id, username)  :
     sql(f""" select b.book_id, string_agg(p.username, ';')
@@ -173,9 +193,14 @@ def mark_will_read   (book_id, username) :
         print(f'You mark read {book_id} will_read')
     
     
-def fav_book (  username) :
-    pass
-#      same logic for the previous, make fav=1
+def fav_book ( book_id, username) :
+     if user_exist (username) :
+            #make sure the same book is not marked fav before:
+            f= sql (f"SELECT * FROM users WHERE  book_id = {book_id} AND username = '{username}' and fav =1")
+            if len(f.index) == 0 : 
+              sql(f"INSERT INTO users (username,book_id,  fav) VALUES ( '{username}' , {book_id}, 1)")
+            else:
+                print('Book marked as favourite before!')
     
 def my_books (username)    :
     pass
