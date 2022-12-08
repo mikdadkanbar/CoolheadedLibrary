@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS public.users
     fav integer,
     reading integer,
     will_read integer,
-    read integer
+    read integer,
+    borrowed integer
 );
 
 CREATE TABLE IF NOT EXISTS public.books
@@ -21,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.books
     pages integer,
     genre character varying(55),
     quantity integer,
-	borrowed integer,
+	
     
     PRIMARY KEY (book_id)
 );
@@ -32,6 +33,8 @@ ALTER TABLE IF EXISTS public.users
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
+
+
 INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Fundamentals of Wavelets', 'Goswami, Jaideva', 'signal_processing', 228, 18);
 INSERT INTO books (name, author, genre, pages , quantity) VALUES ('Data Smart', 'Foreman, John', 'data_science', 235, 37);
 INSERT INTO books (name, author, genre, pages , quantity) VALUES ('God Created the Integers', 'Hawking, Stephen', 'mathematics', 197, 8);

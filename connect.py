@@ -2,6 +2,7 @@
 import pandas as pd
 import psycopg2
 from   config import config  
+from tabulate import tabulate
 
 def sql(command) :
    
@@ -17,15 +18,11 @@ def sql(command) :
         cur = conn.cursor()
         
         cur.execute(command)
-        
-        result = pd.DataFrame (cur.fetchall())
+        result = pd.DataFrame (cur.fetchall() )
          
-#         for r in result:
-#             print (r)
-        return result
-       
 	 
         cur.close()
+        return tabulate(result, tablefmt="outline")
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
@@ -33,3 +30,4 @@ def sql(command) :
             conn.close()
             print('Database connection closed.')
 
+print (sql('select * from books'))

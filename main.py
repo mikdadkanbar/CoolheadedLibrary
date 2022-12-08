@@ -231,6 +231,6 @@ def statistics (username)  :
     
  
   
-mark_will_read()
+print (sql('select * from books'))
  
  
