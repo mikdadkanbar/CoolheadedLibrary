@@ -2,7 +2,7 @@
 import pandas as pd
 import psycopg2
 from   config import config  
-from tabulate import tabulate
+
 
 def sql(command) :
    
@@ -11,7 +11,7 @@ def sql(command) :
         
         params = config()
         
-        print('Connecting to the PostgreSQL database...')
+        # print('Connecting to the PostgreSQL database...')
         conn = psycopg2.connect(**params)
         conn.autocommit = True
 		
@@ -22,12 +22,12 @@ def sql(command) :
          
 	 
         cur.close()
-        return tabulate(result, tablefmt="outline")
+        
+        return result 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
         if conn is not None:
             conn.close()
-            print('Database connection closed.')
+            # print('Database connection closed.')
 
-print (sql('select * from books'))

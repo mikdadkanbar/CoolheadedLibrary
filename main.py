@@ -1,6 +1,6 @@
 from connect import *
-
-
+from tabulate import tabulate
+from User import *
 
 
 def user_exist (username) :
@@ -198,10 +198,10 @@ def my_books(username)    :
     inner join books b ON u.book_id=b.book_id """)
     
 
-    print ('Books you read:' , '\n',books_you_read  )   
-    print ('Books you are reading: ' , '\n',reading )   
-    print ('Books you will_read: ' , '\n',will_read )   
-    print ('Your favourite books are: ' , '\n',fav ) 
+    print ('Books you read:' , '\n',table (books_you_read ) )   
+    print ('Books you are reading: ' , '\n',table (reading) )   
+    print ('Books you will_read: ' , '\n',table(will_read) )   
+    print ('Your favourite books are: ' , '\n',table(fav) ) 
      
     
     
@@ -229,10 +229,60 @@ def statistics (username)  :
         for i in stats.items():
             print (i)
      
+def table (df)    :
+    return tabulate(df, tablefmt="outline") 
     
+ 
+
+def select_random_user ():
+    users=sql('select username from users')
+    r=random.randrange(1,len (users))
+    username=(users.iloc[:,[0]].values[r])[0]
+    print (username)
+    return username
+
+def select_random_book_id ():
+    books = sql('select book_id from books')
+    r=random.randrange(1,len (books))
+    book=(books.iloc[:,[0]].values[r])[0]
+    print (book)
+    return book
+
+def make_random_operation ():
+    username = select_random_user ()
+    book=select_random_book_id ()
+    operation = random.randrange(1,7)
+    if operation ==1:
+     print ('going to borrow_book ')
+     borrow_book (book, username)
+     
+    elif operation ==2:
+     print ('going to return_book')
+     return_book(book, username)
+    elif operation ==3: 
+     print ('going to mark_read')
+     mark_read(book, username)
+    elif operation ==4: 
+     print ('going to mark_will_read ')
+     mark_will_read(book, username)
+    elif operation ==5:
+        print ('going to mark_reading ')
+        mark_reading(book, username)
+    elif operation ==6:
+        print ('going to fav_book')
+        fav_book(book, username)
     
- 
-  
-print (sql('select * from books'))
- 
- 
+
+
+
+# for i in range (100) :
+#     sign_up(generate_random_user () )
+# for i in range (100) : 
+#     make_random_operation ()
+# print (select_random_book_id ())
+# print (sql('select * from users ORDER BY username limit 5'))
+# make_random_operation ()
+# select_random_book_id ()
+# statistics (select_random_user())
+my_books('Silas_Molly_3583')
+# print (sql( "select * from users where username ='Lauryn_Judi_2410'" ))
